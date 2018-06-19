@@ -157,6 +157,11 @@
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\ChurchDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\CategoryRepo.cs" />
+    <Compile Include="Repos\ICategory.cs" />
+    <Compile Include="Repos\IKid.cs" />
+    <Compile Include="Repos\IPerson.cs" />
+    <Compile Include="Repos\PersonRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ChurchDir.mdf" />

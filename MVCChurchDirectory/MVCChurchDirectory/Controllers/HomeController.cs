@@ -9,10 +9,7 @@ namespace MVCChurchDirectory.Controllers
 {
     public class HomeController : Controller
     {
-        static string connString = "Data Source=(LocalDB)\\v12.0; " +
-            "Integrated Security=SSPI;" +
-            "AttachDbFileName=|DataDirectory|\\ChurchDir.MDF;";
-        private ChurchDBContext dtb = new ChurchDBContext(connString);
+        
 
         public ActionResult Index()
         {
