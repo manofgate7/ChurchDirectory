@@ -7,53 +7,56 @@ using System.Web;
 
 namespace MVCChurchDirectory.Models
 {
+    [Table("tblPerson")]
     public class Person
     {
         [Key]
-        public int ID;
+        public int ID { get; set; }
         
         [Required]
         [StringLength(100, MinimumLength = 3)]
-        public string FirstName;
+        public string FirstName { get; set; }
 
         [Required]
         [StringLength(100, MinimumLength =3)]
-        public string LastName;
+        public string LastName { get; set; }
 
         [EmailAddress]
         [Required]
-        public string Email;
+        public string Email { get; set; }
 
         [Phone]
         [Required]
-        public string PhoneNumber;
+        public string PhoneNumber { get; set; }
 
         [StringLength(255)]
-        public string Address;
+        public string Address { get; set; }
 
         [StringLength(255)]
-        public string CityStateZip;
+        public string CityStateZip { get; set; }
 
         [StringLength(255)]
-        public string BestWayToContact;
+        public string BestWayToContact { get; set; }
 
-        public bool? HaveKids;
+        public bool? HaveKids { get; set; }
 
         [Range(0, 5)]
-        public int? MatStatus;
+        public int? MatStatus { get; set; }
 
-        public int? PersonMarriedTo;
+        public int? PersonMarriedTo { get; set; }
 
-        [Timestamp]
-        public DateTime Modified;
-
+        
+        public DateTime Modified { get; set; }
+        [ForeignKey("Category")]
         public int CategoryID;
 
-        [ForeignKey("CategoryID")]
-        public Category Category;
+        
+        public virtual Category Category { get; set; }
 
         public virtual ICollection<Child> Children { get; set; }
 
-        public HttpPostedFileBase Picture;
+        public byte[] Image { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase Picture { get; set; }
     }
 }

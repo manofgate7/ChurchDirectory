@@ -13,6 +13,7 @@ namespace MVCChurchDirectory.Repos
             "AttachDbFileName=|DataDirectory|\\ChurchDir.MDF;";
         private ChurchDBContext dtb = new ChurchDBContext(connString);
 
+
         public bool AddNewChild(Child child)
         {
             try

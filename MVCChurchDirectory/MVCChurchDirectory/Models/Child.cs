@@ -7,25 +7,26 @@ using System.Web;
 
 namespace MVCChurchDirectory.Models
 {
+    [Table("tblChild")]
     public class Child
     {
         [Key]
-        public int ChildID;
+        public int ChildID { get; set; }
 
         [Required]
         [StringLength(100, MinimumLength = 3)]
-        public string FirstName;
+        public string FirstName { get; set; }
 
         [Required]
         [StringLength(100, MinimumLength = 3)]
-        public string LastName;
+        public string LastName { get; set; }
 
-        public int? Age;
+        public int? Age { get; set; }
 
-        
+        [ForeignKey("Person")]
         public int PersonID;
 
-        [ForeignKey("PersonID")]
-        public Person Person;
+        
+        public virtual Person Person { get; set; }
     }
 }

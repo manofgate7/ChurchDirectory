@@ -12,9 +12,11 @@ namespace MVCChurchDirectory.Models
         {
             this.Database.Connection.ConnectionString = connString;
         }
-        public DbSet<Person> Persons { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Person> Persons { get; set; }
         public DbSet<Child> Children { get; set; }
+
+
 
     }
 }
