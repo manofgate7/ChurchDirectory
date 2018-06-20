@@ -42,6 +42,8 @@ namespace MVCChurchDirectory.Models
         [Range(0, 5)]
         public int? MatStatus;
 
+        public int? PersonMarriedTo;
+
         [Timestamp]
         public DateTime Modified;
 

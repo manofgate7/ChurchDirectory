@@ -1,0 +1,23 @@
+﻿@model MVCChurchDirectory.ViewModels.HomePersonViewModel
+<h4>Person's Details</h4>
+<div>
+    @Html.DisplayFor(model => Model.Picture)  <span>@Html.DisplayFor(model => Model.Name)</span> <span>@Model.Modified</span>
+</div>
+<div>
+    @Model.Email <span>@Model.PhoneNumber</span> <span>@Model.FullAddress</span>
+</div>
+<div>
+    @Model.MatStatus <span>@Model.MarriedTo</span>
+</div>
+<div>
+    @Model.BestWayToContact <span>@Html.DisplayFor(model => Model.Category)</span>
+</div>
+
+<div>
+    @foreach(var child in Model.Children)
+    {
+        <div >
+            <span>@child.FirstName + " " + @child.LastName</span> <span> @child.Age</span>
+        </div>
+    }
+</div>

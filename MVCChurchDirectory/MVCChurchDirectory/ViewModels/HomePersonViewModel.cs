@@ -15,6 +15,10 @@ namespace MVCChurchDirectory.ViewModels
         [HiddenInput]
         public int personID { get; set; }
 
+        [DisplayName("First Name")]
+        [StringLength(100, MinimumLength = 3)]
+        public string FirstName { get; set; }
+
         [DisplayName("Last Name")]
         [StringLength(100, MinimumLength = 3)]
         public string LastName { get; set; }
@@ -59,5 +63,43 @@ namespace MVCChurchDirectory.ViewModels
         public virtual ICollection<Child> Children { get; set; }
 
         public HttpPostedFileBase Picture;
+
+        public string MarriedTo { get; set; }
+
+        public string Name
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
+
+        public string FullAddress
+        {
+            get
+            {
+                return Address + " " + CityStateZip;
+            }
+        }
+
+        public static HomePersonViewModel Map(Person dm)
+        {
+            return new HomePersonViewModel()
+            {
+                personID = dm.ID
+                , Address = dm.Address
+                , BestWayToContact = dm.BestWayToContact
+                , CategoryID = dm.CategoryID
+                , CityStateZip = dm.CityStateZip
+                , Email = dm.Email
+                , FirstName = dm.FirstName
+                , HaveKids = dm.HaveKids
+                , LastName = dm.LastName
+                , MatStatus = dm.MatStatus
+                , Modified = dm.Modified
+                , PhoneNumber = dm.PhoneNumber
+                , Picture = dm.Picture
+            };
+        }
     }
 }
