@@ -15,7 +15,17 @@ namespace MVCChurchDirectory.Repos
 
         public bool AddNewChild(Child child)
         {
-            throw new NotImplementedException();
+            try
+            {
+                dtb.Children.Add(child);
+                dtb.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public bool AddNewPerson(Person person)
@@ -34,12 +44,16 @@ namespace MVCChurchDirectory.Repos
 
         public List<Child> GetChildren()
         {
-            throw new NotImplementedException();
+            List<Child> children = new List<Child>();
+            children = dtb.Children.ToList();
+            return children;
         }
 
         public List<Child> GetChildren(int personID)
         {
-            throw new NotImplementedException();
+            List<Child> children = new List<Child>();
+            children = dtb.Children.Where(x=> x.PersonID == personID).ToList();
+            return children;
         }
 
         public List<Person> GetPeople()
@@ -72,7 +86,19 @@ namespace MVCChurchDirectory.Repos
 
         public bool UpdateChild(Child child)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Child uChild = dtb.Children.Single(m => m.ChildID == child.ChildID);
+                uChild.Age = child.Age;
+                uChild.FirstName = child.FirstName;
+                uChild.LastName = child.LastName;
+                uChild.PersonID = child.PersonID;
+                dtb.SaveChanges();
+            }catch(Exception e)
+            {
+                return false;
+            }
+            return true;
         }
 
         public bool UpdatePerson(Person person)

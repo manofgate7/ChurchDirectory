@@ -15,22 +15,46 @@ namespace MVCChurchDirectory.Repos
 
         public bool AddNewCategory(Category category)
         {
-            throw new NotImplementedException();
+            try
+            {
+                dtb.Categories.Add(category);
+                dtb.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public List<Category> GetCategories()
         {
-            throw new NotImplementedException();
+            List<Category> categories = new List<Category>();
+            categories = dtb.Categories.ToList();
+            return categories;
         }
 
         public Category GetCategory(int CatID)
         {
-            throw new NotImplementedException();
+            Category category = dtb.Categories.Single(m => m.CatID == CatID);
+            return category;
         }
 
         public bool UpdateCategory(Category category)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Category uCategory = dtb.Categories.Single(m => m.CatID == category.CatID);
+                uCategory.Name = category.Name;
+                dtb.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
