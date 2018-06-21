@@ -1,0 +1,21 @@
+﻿@model MVCChurchDirectory.ViewModels.AdminViewModel
+
+<p>
+    @Html.DropDownListFor(x => x.SelectedID,
+                            new SelectList(Model.AdminList, "ID", "Name"), "-- Select Action--", new { id = "ddlCategory"})
+</p>
+
+<div id="dvCategoryResults">
+    
+</div>
+
+@section Scripts {
+<script type="text/javascript">
+        $("#ddlCategory").change(function () {
+            var categoryId =  $("#ddlCategory").val();
+               $("#dvCategoryResults").load('@(Url.Action("GrabAdminPage", "Admin",null, Request.Url.Scheme))?categoryId=' + categoryId);
+        });
+</script> 
+    
+}
+

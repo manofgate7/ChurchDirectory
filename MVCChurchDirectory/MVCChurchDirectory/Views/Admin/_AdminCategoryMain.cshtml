@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MVCChurchDirectory.Models.Category>
+<div>
+    <button type="button">Add New church Job</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        @foreach(var cat in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => cat.Name);
+                </td>
+            </tr>
+        }
+    </table>
+
+    <div id="CatNameChange">
+
+    </div>
+</div>

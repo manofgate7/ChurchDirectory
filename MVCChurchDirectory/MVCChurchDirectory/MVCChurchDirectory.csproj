@@ -148,6 +148,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -162,6 +163,7 @@
     <Compile Include="Repos\IKid.cs" />
     <Compile Include="Repos\IPerson.cs" />
     <Compile Include="Repos\PersonRepo.cs" />
+    <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\EditPersonViewModel.cs" />
     <Compile Include="ViewModels\HomePersonViewModel.cs" />
   </ItemGroup>
@@ -205,6 +207,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_PersonDetails.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\_AdminPersonMain.cshtml" />
+    <Content Include="Views\Admin\_AdminCategoryMain.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
