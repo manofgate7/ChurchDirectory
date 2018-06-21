@@ -31,7 +31,8 @@ namespace MVCChurchDirectory.Controllers
             foreach (var person in people)
             {
                 HomePersonViewModel personVM = HomePersonViewModel.Map(person);
-                personVM.Category = categoryRepo.GetCategory(person.CategoryID).Name;
+                if(person.CategoryID > 0)
+                    personVM.Category = categoryRepo.GetCategory(person.CategoryID).Name;
                 personViewModel.Add(personVM);
             }
 
@@ -42,11 +43,12 @@ namespace MVCChurchDirectory.Controllers
         {
             var person = personRepo.GetPerson(id);
             HomePersonViewModel personVM = HomePersonViewModel.Map(person);
-            personVM.Category = categoryRepo.GetCategory(person.CategoryID).Name;
+            if (person.CategoryID > 0)
+                personVM.Category = categoryRepo.GetCategory(person.CategoryID).Name;
             personVM.Children = kidRepo.GetChildren(person.ID);
             var mPerson = personRepo.GetPerson(person.PersonMarriedTo ?? -1);
-
-            personVM.MarriedTo = mPerson.FirstName + " " + mPerson.LastName;
+            if(mPerson != null)
+                personVM.MarriedTo = mPerson.FirstName + " " + mPerson.LastName;
             return PartialView("_PersonDetails", personVM);
         }
 

@@ -12,6 +12,7 @@ namespace MVCChurchDirectory.Controllers
     public class AdminController : Controller
     {
         private ICategory catRepo = new CategoryRepo();
+        private IPerson personRepo = new PersonRepo();
         
         public ActionResult Index()
         {
@@ -28,6 +29,14 @@ namespace MVCChurchDirectory.Controllers
         {
             if(categoryId == 0){
                 List<EditPersonViewModel> editPersonViewModel = new List<EditPersonViewModel>();
+                List<Person> people = personRepo.GetPeople();
+                foreach (var person in people)
+                {
+                    EditPersonViewModel personVM = EditPersonViewModel.Map(person);
+                    if (person.CategoryID > 0)
+                        personVM.Category = catRepo.GetCategory(person.CategoryID).Name;
+                    editPersonViewModel.Add(personVM);
+                }
                 return PartialView("_AdminPersonMain", editPersonViewModel);
             }
             else if(categoryId == 1)
@@ -44,6 +53,12 @@ namespace MVCChurchDirectory.Controllers
         public ActionResult NewViewCat()
         {
             return PartialView("_AddCategory");
+        }
+
+        [HttpGet]
+        public ActionResult NewViewPerson()
+        {
+            return PartialView("_AddPerson");
         }
 
         [HttpGet]
@@ -72,6 +87,17 @@ namespace MVCChurchDirectory.Controllers
                 return RedirectToAction("Index");
             else
                 return PartialView("_EditCategory");
+        }
+
+        [HttpPost]
+        public ActionResult CreatePerson(Person form)
+        {
+
+            bool hasSaved = personRepo.AddNewPerson(form);
+            if (hasSaved)
+                return RedirectToAction("Index");
+            else
+                return PartialView("_AddPerson");
         }
     }
 }

@@ -24,9 +24,9 @@ namespace MVCChurchDirectory.Models
         public int? Age { get; set; }
 
         [ForeignKey("Person")]
-        public int PersonID;
+        public int? PersonID { get; set; }
 
-        
+
         public virtual Person Person { get; set; }
     }
 }

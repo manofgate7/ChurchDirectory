@@ -33,6 +33,7 @@ namespace MVCChurchDirectory.Repos
         {
             try
             {
+                person.Modified = DateTime.Now;
                 dtb.Persons.Add(person);
                 dtb.SaveChanges();
             }catch(Exception e)
@@ -67,8 +68,17 @@ namespace MVCChurchDirectory.Repos
 
         public Person GetPerson(int ID)
         {
-            Person person = dtb.Persons.Single(m => m.ID == ID);
-            return person;
+            if (ID != -1)
+            {
+                Person person = dtb.Persons.Single(m => m.ID == ID);
+
+                return person;
+            }
+            else
+            {
+                return null;
+            }
+                
         }
 
         public List<Person> GetSearchedPeople(string name)
