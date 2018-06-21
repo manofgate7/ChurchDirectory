@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<MVCChurchDirectory.Models.Category>
 <div>
-    <button type="button">Add New church Job</button>
-
+    <button type="button" onclick="AddNewCat()">Add New church Job</button>
+    <div id="NewCategory"></div>
     <table>
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Title</th>
             </tr>
         </thead>
         @foreach(var cat in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(model => cat.Name);
+                    @Html.DisplayFor(model => cat.Name)
                 </td>
             </tr>
         }
@@ -22,3 +22,5 @@
 
     </div>
 </div>
+    
+

@@ -14,7 +14,10 @@
         $("#ddlCategory").change(function () {
             var categoryId =  $("#ddlCategory").val();
                $("#dvCategoryResults").load('@(Url.Action("GrabAdminPage", "Admin",null, Request.Url.Scheme))?categoryId=' + categoryId);
-        });
+    });
+    var AddNewCat = function () {
+            $("#NewCategory").load('@Url.Action("NewViewCat","Admin")');
+        };
 </script> 
     
 }

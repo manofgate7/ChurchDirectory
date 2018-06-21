@@ -210,6 +210,10 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\_AdminPersonMain.cshtml" />
     <Content Include="Views\Admin\_AdminCategoryMain.cshtml" />
+    <Content Include="Views\Admin\_EditPerson.cshtml" />
+    <Content Include="Views\Admin\_AddPerson.cshtml" />
+    <Content Include="Views\Admin\_EditCategory.cshtml" />
+    <Content Include="Views\Admin\_AddCategory.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
