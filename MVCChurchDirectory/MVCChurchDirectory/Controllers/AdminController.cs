@@ -58,7 +58,17 @@ namespace MVCChurchDirectory.Controllers
         [HttpGet]
         public ActionResult NewViewPerson()
         {
-            return PartialView("_AddPerson");
+            EditPersonViewModel pVModel = new EditPersonViewModel();
+            pVModel.Categories = catRepo.GetCategories();
+            var people = personRepo.GetPeople();
+            List<PersonNameViewModel> peopleList = new List<PersonNameViewModel>();
+            foreach(var person in people)
+            {
+                PersonNameViewModel personVM = PersonNameViewModel.Map(person);
+                peopleList.Add(personVM);
+            }
+            pVModel.people = peopleList;
+            return PartialView("_AddPerson", pVModel);
         }
 
         [HttpGet]
@@ -90,10 +100,10 @@ namespace MVCChurchDirectory.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreatePerson(Person form)
+        public ActionResult CreatePerson(EditPersonViewModel form)
         {
-
-            bool hasSaved = personRepo.AddNewPerson(form);
+            Person person = Person.Map(form);
+            bool hasSaved = personRepo.AddNewPerson(person);
             if (hasSaved)
                 return RedirectToAction("Index");
             else
@@ -105,7 +115,16 @@ namespace MVCChurchDirectory.Controllers
         {
             Person person = personRepo.GetPerson(personID);
             EditPersonViewModel pViewModel = EditPersonViewModel.Map(person);
-            
+            pViewModel.Categories = catRepo.GetCategories();
+            var people = personRepo.GetPeople();
+            List<PersonNameViewModel> peopleList = new List<PersonNameViewModel>();
+            people.Remove(people.FirstOrDefault(x => x.ID == personID));
+            foreach (var personL in people)
+            {
+                PersonNameViewModel personVM = PersonNameViewModel.Map(personL);
+                peopleList.Add(personVM);
+            }
+            pViewModel.people = peopleList;
             return PartialView("_EditPerson", pViewModel);
         }
 

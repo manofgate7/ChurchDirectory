@@ -63,7 +63,11 @@ namespace MVCChurchDirectory.ViewModels
 
         public HttpPostedFileBase Picture;
 
-        public string MarriedTo { get; set; }
+        public int? MarriedTo { get; set; }
+
+        public List<PersonNameViewModel> people { get; set; }
+
+        public List<Category> Categories { get; set; }
 
 
         public static EditPersonViewModel Map(Person dm)
@@ -95,6 +99,7 @@ namespace MVCChurchDirectory.ViewModels
                 PhoneNumber = dm.PhoneNumber
                 ,
                 Picture = dm.Picture
+                , MarriedTo = dm.PersonMarriedTo
             };
         }
     }

@@ -46,10 +46,11 @@ namespace MVCChurchDirectory.Models
 
         public int? PersonMarriedTo { get; set; }
 
+
         
         public DateTime Modified { get; set; }
         [ForeignKey("Category")]
-        public int CategoryID;
+        public int CategoryID { get; set; }
 
         
         public virtual Category Category { get; set; }
@@ -90,6 +91,7 @@ namespace MVCChurchDirectory.Models
                 PhoneNumber = dm.PhoneNumber
                 ,
                 Picture = dm.Picture
+                , PersonMarriedTo = dm.MarriedTo
             };
         }
     }

@@ -129,6 +129,7 @@ namespace MVCChurchDirectory.Repos
                 uPerson.PhoneNumber = person.PhoneNumber;
                 uPerson.Picture = person.Picture;
                 uPerson.Modified = DateTime.Now;
+                uPerson.PersonMarriedTo = person.PersonMarriedTo;
                 dtb.SaveChanges();
             }catch(Exception e)
             {
