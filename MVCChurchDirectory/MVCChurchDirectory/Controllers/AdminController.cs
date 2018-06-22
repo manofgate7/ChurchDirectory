@@ -99,5 +99,25 @@ namespace MVCChurchDirectory.Controllers
             else
                 return PartialView("_AddPerson");
         }
+
+        [HttpGet]
+        public ActionResult EditViewPerson(int personID)
+        {
+            Person person = personRepo.GetPerson(personID);
+            EditPersonViewModel pViewModel = EditPersonViewModel.Map(person);
+            
+            return PartialView("_EditPerson", pViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult EditPerson(EditPersonViewModel form)
+        {
+            Person person = Person.Map(form);
+            bool hasSaved = personRepo.UpdatePerson(person);
+            if (hasSaved)
+                return RedirectToAction("Index");
+            else
+                return PartialView("_EditPerson");
+        }
     }
 }

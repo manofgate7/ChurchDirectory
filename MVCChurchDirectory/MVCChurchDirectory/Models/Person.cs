@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVCChurchDirectory.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -58,5 +59,38 @@ namespace MVCChurchDirectory.Models
         public byte[] Image { get; set; }
         [NotMapped]
         public HttpPostedFileBase Picture { get; set; }
+
+
+        public static Person Map(EditPersonViewModel dm)
+        {
+            return new Person()
+            {
+                ID = dm.personID
+                ,
+                Address = dm.Address
+                ,
+                BestWayToContact = dm.BestWayToContact
+                ,
+                CategoryID = dm.CategoryID
+                ,
+                CityStateZip = dm.CityStateZip
+                ,
+                Email = dm.Email
+                ,
+                FirstName = dm.FirstName
+                ,
+                HaveKids = dm.HaveKids
+                ,
+                LastName = dm.LastName
+                ,
+                MatStatus = dm.MatStatus
+                ,
+                Modified = dm.Modified
+                ,
+                PhoneNumber = dm.PhoneNumber
+                ,
+                Picture = dm.Picture
+            };
+        }
     }
 }

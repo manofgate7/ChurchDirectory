@@ -21,6 +21,14 @@
     var AddNewPerson = function () {
         $("#NewPerson").load('@Url.Action("NewViewPerson","Admin")');
     };
+    var EditViewCategory = function (catID) {
+        var url = '/Admin/EditViewCat?CatID=' + catID;
+        $("#CatNameChange").load(url);
+    };
+    var EditViewPerson = function (personID) {
+        var url = '/Admin/EditViewPerson?personID=' + personID;
+        $("#EditPersonArea").load(url);
+    };
 </script> 
     
 }

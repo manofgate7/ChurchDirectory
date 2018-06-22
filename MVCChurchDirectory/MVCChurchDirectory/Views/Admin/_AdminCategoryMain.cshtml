@@ -6,6 +6,7 @@
         <thead>
             <tr>
                 <th>Title</th>
+                <th>Actions</th>
             </tr>
         </thead>
         @foreach(var cat in Model)
@@ -13,6 +14,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(model => cat.Name)
+                </td>
+                <td>
+                    <button type="button" class=" btn glyphicon glyphicon-pencil" onclick="EditViewCategory(@cat.CatID)">  Edit</button>
                 </td>
             </tr>
         }

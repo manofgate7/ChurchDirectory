@@ -10,15 +10,19 @@
                     <th>Last Name</th>
                     <th>Picture</th>
                     <th>Church Job</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             @foreach (var person in Model)
     {
-        <tr id="personRow" onclick="GetPersonDetails(@person.personID)">
+        <tr id="personRow">
             <td>@person.FirstName</td>
             <td>@person.LastName</td>
             <td>@person.Picture</td>
             <td>@person.Category</td>
+            <td>
+                <button type="button" class="btn glyphicon glyphicon-pencil" onclick="EditViewPerson(@person.personID)"> Edit</button>
+            </td>
         </tr>
     }
         </table>
