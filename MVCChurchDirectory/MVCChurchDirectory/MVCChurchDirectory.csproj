@@ -157,6 +157,7 @@
     <Compile Include="Models\Child.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\ChurchDBContext.cs" />
+    <Compile Include="ViewModels\MaritalVModel.cs" />
     <Compile Include="ViewModels\PersonNameViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\CategoryRepo.cs" />

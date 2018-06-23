@@ -11,15 +11,27 @@
 
 @section Scripts {
 <script type="text/javascript">
-        $("#ddlCategory").change(function () {
-            var categoryId =  $("#ddlCategory").val();
-               $("#dvCategoryResults").load('@(Url.Action("GrabAdminPage", "Admin",null, Request.Url.Scheme))?categoryId=' + categoryId);
+    $("#ddlCategory").change(function () {
+        var categoryId = $("#ddlCategory").val();
+        $("#dvCategoryResults").load('@(Url.Action("GrabAdminPage", "Admin",null, Request.Url.Scheme))?categoryId=' + categoryId);
     });
+
     var AddNewCat = function () {
         $("#NewCategory").load('@Url.Action("NewViewCat","Admin")');
     };
     var AddNewPerson = function () {
-        $("#NewPerson").load('@Url.Action("NewViewPerson","Admin")');
+        $("#NewPerson").load('@Url.Action("NewViewPerson","Admin")', function () {
+            $("#ddlMStatus").change(function () {
+                $("#ddlPerson").val(1);
+                var status = $("#ddlMStatus").val();
+                if (status == 1) {
+                    $("#fieldMarried").show();
+                } else {
+                    $("#fieldMarried").hide();
+                }
+            });
+        });
+        
     };
     var EditViewCategory = function (catID) {
         var url = '/Admin/EditViewCat?CatID=' + catID;
@@ -27,8 +39,23 @@
     };
     var EditViewPerson = function (personID) {
         var url = '/Admin/EditViewPerson?personID=' + personID;
-        $("#EditPersonArea").load(url);
+        $("#EditPersonArea").load(url, function () {
+            if ($("#ddlMStatus").val() != 1) {
+                $("#fieldMarried").hide();
+            }
+            $("#ddlMStatus").change(function () {
+                $("#ddlPerson").val("1");
+                var status = $("#ddlMStatus").val();
+                if (status == 1) {
+                    $("#fieldMarried").show();
+                } else {
+                    $("#fieldMarried").hide();
+                }
+            });
+        });
     };
+
+    
 </script> 
     
 }

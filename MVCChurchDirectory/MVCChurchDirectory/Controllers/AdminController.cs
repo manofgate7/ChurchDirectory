@@ -68,6 +68,7 @@ namespace MVCChurchDirectory.Controllers
                 peopleList.Add(personVM);
             }
             pVModel.people = peopleList;
+            pVModel.MartialStatuses = CreateMartailList();
             return PartialView("_AddPerson", pVModel);
         }
 
@@ -125,6 +126,7 @@ namespace MVCChurchDirectory.Controllers
                 peopleList.Add(personVM);
             }
             pViewModel.people = peopleList;
+            pViewModel.MartialStatuses = CreateMartailList();
             return PartialView("_EditPerson", pViewModel);
         }
 
@@ -137,6 +139,19 @@ namespace MVCChurchDirectory.Controllers
                 return RedirectToAction("Index");
             else
                 return PartialView("_EditPerson");
+        }
+
+        [NonAction]
+        public List<MaritalVModel> CreateMartailList()
+        {
+            List<MaritalVModel> list = new List<MaritalVModel>
+            {
+                new MaritalVModel(0, "Single"),
+                new MaritalVModel(1, "Married"),
+                new MaritalVModel(2, "Divorced"),
+                new MaritalVModel(3, "Widowed")
+            };
+            return list;
         }
     }
 }

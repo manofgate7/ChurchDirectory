@@ -69,6 +69,8 @@ namespace MVCChurchDirectory.ViewModels
 
         public List<Category> Categories { get; set; }
 
+        public List<MaritalVModel> MartialStatuses { get; set; }
+
 
         public static EditPersonViewModel Map(Person dm)
         {
