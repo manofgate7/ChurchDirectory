@@ -216,6 +216,8 @@
     <Content Include="Views\Admin\_AddPerson.cshtml" />
     <Content Include="Views\Admin\_EditCategory.cshtml" />
     <Content Include="Views\Admin\_AddCategory.cshtml" />
+    <Content Include="Views\Admin\_ModalPopUpKid.cshtml" />
+    <Content Include="Views\Admin\_EditModalKid.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -71,6 +71,8 @@ namespace MVCChurchDirectory.ViewModels
 
         public List<MaritalVModel> MartialStatuses { get; set; }
 
+        public IDictionary<bool, string> YNOptions { get; set; }
+
 
         public static EditPersonViewModel Map(Person dm)
         {

@@ -81,6 +81,21 @@ namespace MVCChurchDirectory.Repos
                 
         }
 
+        public Child GetChild(int ID)
+        {
+            if (ID != -1)
+            {
+                Child child = dtb.Children.Single(m => m.ChildID == ID);
+
+                return child;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
         public List<Person> GetSearchedPeople(string name)
         {
             List<Person> people = new List<Person>();

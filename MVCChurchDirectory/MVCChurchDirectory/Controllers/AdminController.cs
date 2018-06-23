@@ -13,6 +13,7 @@ namespace MVCChurchDirectory.Controllers
     {
         private ICategory catRepo = new CategoryRepo();
         private IPerson personRepo = new PersonRepo();
+        private IKid kidRepo = new PersonRepo();
         
         public ActionResult Index()
         {
@@ -69,6 +70,7 @@ namespace MVCChurchDirectory.Controllers
             }
             pVModel.people = peopleList;
             pVModel.MartialStatuses = CreateMartailList();
+            pVModel.YNOptions = CreateOptions();
             return PartialView("_AddPerson", pVModel);
         }
 
@@ -127,6 +129,8 @@ namespace MVCChurchDirectory.Controllers
             }
             pViewModel.people = peopleList;
             pViewModel.MartialStatuses = CreateMartailList();
+            pViewModel.YNOptions = CreateOptions();
+            pViewModel.Children = kidRepo.GetChildren(person.ID);
             return PartialView("_EditPerson", pViewModel);
         }
 
@@ -153,5 +157,62 @@ namespace MVCChurchDirectory.Controllers
             };
             return list;
         }
+
+        [NonAction]
+        public Dictionary<bool, string> CreateOptions()
+        {
+            Dictionary<bool, string> options = new Dictionary<bool, string>();
+            options.Add(false, "no");
+            options.Add(true, "yes");
+
+            return options;
+        }
+
+        [HttpGet]
+        public ActionResult ModalPopUpKid(int personID)
+        {
+            Child child = new Child();
+            child.PersonID = personID;
+            return PartialView("_ModalPopUpKid", child);
+        }
+
+        [HttpGet]
+        public ActionResult EditModalKid(int ChildID)
+        {
+            Child child = kidRepo.GetChild(ChildID);
+            
+            return PartialView("_EditModalKid", child);
+        }
+
+        [HttpPost]
+        public ActionResult CreateChild(Child child)
+        {
+            bool hasSaved = kidRepo.AddNewChild(child);
+            if (hasSaved)
+            {
+                return Json(new { success = true });
+            }
+            else
+            {
+                return Json(new { error = "Error! Can't Save Data!" });
+            }
+            
+        }
+
+        [HttpPost]
+        public ActionResult EditChild(Child child)
+        {
+            bool hasSaved = kidRepo.UpdateChild(child);
+            if (hasSaved)
+            {
+                return Json(new { success = true });
+            }
+            else
+            {
+                return Json(new { error = "Error! Can't Save Data!" });
+            }
+
+        }
+        
     }
 }

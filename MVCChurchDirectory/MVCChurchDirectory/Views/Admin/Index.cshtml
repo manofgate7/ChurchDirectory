@@ -52,9 +52,66 @@
                     $("#fieldMarried").hide();
                 }
             });
+
+            if ($("#ddlHKids").val() != "True") {
+                $("#HavingKids").hide();
+            }
+            $("#ddlHKids").change(function () {
+                var status = $("#ddlHKids").val();
+                if (status == "True") {
+                    $("#HavingKids").show();
+                } else {
+                    $("#HavingKids").hide();
+                } 
+            });
         });
     };
 
+    var AddNewKid = function (personID) {
+        var url = '/Admin/ModalPopUpKid?personID=' + personID;
+        $("#NewKidModal").load(url, function () {
+            $("#KidModal").modal();
+            $('#kidForm').submit(function (e) {
+                e.preventDefault();
+                $.post(this.action, $(this).serialize(), function (response) {
+                    if (response.error) {
+                        alert(response.error);
+                    }
+                    else {
+                        $('#KidModal').modal('hide');
+                        setTimeout(function () {
+                            EditViewPerson(personID);
+                        }, 100);
+                        
+                    }
+                }, 'json');
+            });
+        });
+          
+    };
+
+    var EditKid = function (childID, personID) {
+        var url = '/Admin/EditModalKid?childID=' + childID;
+        $("#EditViewKid").load(url, function () {
+            $("#KidModal").modal();
+            $('#kidForm').submit(function (e) {
+                e.preventDefault();
+                $.post(this.action, $(this).serialize(), function (response) {
+                    if (response.error) {
+                        alert(response.error);
+                    }
+                    else {
+                        $('#KidModal').modal('hide');
+                        setTimeout(function () {
+                            EditViewPerson(personID);
+                        }, 500);
+
+                    }
+                }, 'json');
+            });
+        });
+
+    };
     
 </script> 
     

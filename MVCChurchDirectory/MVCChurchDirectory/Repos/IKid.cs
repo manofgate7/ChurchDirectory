@@ -13,5 +13,6 @@ namespace MVCChurchDirectory.Repos
         List<Child> GetChildren(int personID);
         bool UpdateChild(Child child);
         bool AddNewChild(Child child);
+        Child GetChild(int childID);
     }
 }
