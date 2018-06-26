@@ -15,20 +15,24 @@ namespace MVCChurchDirectory.Controllers
         private IPerson personRepo = new PersonRepo();
         private IKid kidRepo = new PersonRepo();
         
-        public ActionResult Index()
+        public ActionResult Index(int? lID)
         {
             AdminViewModel adminVM = new AdminViewModel();
             List<AdminDropListModel> model = new List<AdminDropListModel>();
-            model.Add(new AdminDropListModel { ID = 0, Name = "People" });
-            model.Add(new AdminDropListModel { ID = 1, Name = "Church Jobs" });
+            model.Add(new AdminDropListModel { ID = 1, Name = "People" });
+            model.Add(new AdminDropListModel { ID = 2, Name = "Church Jobs" });
             adminVM.AdminList = model;
+            if(lID != null)
+            {
+                adminVM.SelectedID = lID ?? 0;
+            }
             return View(adminVM);
         }
 
         [HttpGet]
         public ActionResult GrabAdminPage(int categoryId)
         {
-            if(categoryId == 0){
+            if(categoryId == 1){
                 List<EditPersonViewModel> editPersonViewModel = new List<EditPersonViewModel>();
                 List<Person> people = personRepo.GetPeople();
                 foreach (var person in people)
@@ -40,7 +44,7 @@ namespace MVCChurchDirectory.Controllers
                 }
                 return PartialView("_AdminPersonMain", editPersonViewModel);
             }
-            else if(categoryId == 1)
+            else if(categoryId == 2)
             {
                 List<Category> categories = new List<Category>();
                 categories = catRepo.GetCategories();
@@ -86,8 +90,11 @@ namespace MVCChurchDirectory.Controllers
         {
             Category category = new Category() { Name = form["name"] };
             bool hasSaved = catRepo.AddNewCategory(category);
-            if(hasSaved)
-                return RedirectToAction("Index");
+            if (hasSaved)
+            {
+                return RedirectToAction("Index", new {lID = 2 });
+            }
+                
             else 
                 return PartialView("_AddCategory");
         }
@@ -97,7 +104,7 @@ namespace MVCChurchDirectory.Controllers
         {
             bool hasSaved = catRepo.UpdateCategory(cat);
             if (hasSaved)
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { lID = 2 });
             else
                 return PartialView("_EditCategory");
         }
@@ -108,7 +115,10 @@ namespace MVCChurchDirectory.Controllers
             Person person = Person.Map(form);
             bool hasSaved = personRepo.AddNewPerson(person);
             if (hasSaved)
-                return RedirectToAction("Index");
+            {
+                
+                return RedirectToAction("Index", new { lID = 1 });
+            } 
             else
                 return PartialView("_AddPerson");
         }
@@ -140,7 +150,7 @@ namespace MVCChurchDirectory.Controllers
             Person person = Person.Map(form);
             bool hasSaved = personRepo.UpdatePerson(person);
             if (hasSaved)
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { lID = 1 });
             else
                 return PartialView("_EditPerson");
         }

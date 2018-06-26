@@ -11,6 +11,9 @@
 
 @section Scripts {
 <script type="text/javascript">
+    if ($("#ddlCategory").val() > 0) {
+        $("#dvCategoryResults").load('@(Url.Action("GrabAdminPage", "Admin",null, Request.Url.Scheme))?categoryId=' + $("#ddlCategory").val());
+    }
     $("#ddlCategory").change(function () {
         var categoryId = $("#ddlCategory").val();
         $("#dvCategoryResults").load('@(Url.Action("GrabAdminPage", "Admin",null, Request.Url.Scheme))?categoryId=' + categoryId);
@@ -31,7 +34,7 @@
                 }
             });
         });
-        
+
     };
     var EditViewCategory = function (catID) {
         var url = '/Admin/EditViewCat?CatID=' + catID;
@@ -62,7 +65,7 @@
                     $("#HavingKids").show();
                 } else {
                     $("#HavingKids").hide();
-                } 
+                }
             });
         });
     };
@@ -82,12 +85,12 @@
                         setTimeout(function () {
                             EditViewPerson(personID);
                         }, 100);
-                        
+
                     }
                 }, 'json');
             });
         });
-          
+
     };
 
     var EditKid = function (childID, personID) {
@@ -112,7 +115,7 @@
         });
 
     };
-    
+
 </script> 
     
 }
