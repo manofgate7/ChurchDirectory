@@ -1,23 +1,29 @@
 ﻿@model MVCChurchDirectory.ViewModels.HomePersonViewModel
-<h4>Person's Details</h4>
 <div>
-    @Html.DisplayFor(model => Model.Picture)  <span>@Html.DisplayFor(model => Model.Name)</span> <span>@Model.Modified</span>
-</div>
-<div>
-    @Model.Email <span>@Model.PhoneNumber</span> <span>@Model.FullAddress</span>
-</div>
-<div>
-    @Model.MatStatus <span>@Model.MarriedTo</span>
-</div>
-<div>
-    @Model.BestWayToContact <span>@Html.DisplayFor(model => Model.Category)</span>
-</div>
-
-<div>
-    @foreach(var child in Model.Children)
-    {
-        <div >
-            <span>@child.FirstName + " " + @child.LastName</span> <span> @child.Age</span>
-        </div>
-    }
+    <h4>Person's Details</h4>
+    <div class="detailDiv col-lg-12">
+        <span class="col-lg-4">@Html.DisplayFor(model => Model.Picture) </span>  <span class="col-lg-4">@Html.LabelFor(model => model.Name): @Html.DisplayFor(model => Model.Name)</span> <span class="col-lg-4">@Html.LabelFor(model => model.Modified): @Model.Modified</span>
+    </div>
+    <br />
+    <div class="detailDiv col-lg-12">
+        <span class="col-lg-4">@Html.LabelFor(model => model.Email): @Model.Email</span> <span class="col-lg-4">@Html.LabelFor(model => model.PhoneNumber): @Model.PhoneNumber</span> <span class="col-lg-4">@Html.LabelFor(model => model.FullAddress): @Model.FullAddress</span>
+    </div>
+    <br />
+    <div class="detailDiv">
+        <span class="col-lg-4">@Html.LabelFor(model => model.MatStatus): @Model.MatStatus </span> <span class="col-lg-8">@Model.MarriedTo</span>
+    </div>
+    <br />
+    <div class="detailDiv">
+        <span class="col-lg-6">@Html.LabelFor(model => model.BestWayToContact): @Model.BestWayToContact </span> <span class="col-lg-6">@Html.LabelFor(model => model.Category): @Html.DisplayFor(model => Model.Category)</span>
+    </div>
+    <br />
+    <div class="detailDiv col-lg-12">
+        @Html.LabelFor(model => model.Children)
+        @foreach (var child in Model.Children)
+        {
+            <div>
+                <span>@child.FirstName  @child.LastName</span> - <span> @child.Age yrs</span>
+            </div>
+        }
+    </div>
 </div>

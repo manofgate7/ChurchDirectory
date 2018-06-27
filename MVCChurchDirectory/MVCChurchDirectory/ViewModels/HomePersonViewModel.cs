@@ -51,6 +51,7 @@ namespace MVCChurchDirectory.ViewModels
         public int? MatStatus { get; set; }
 
         [Timestamp]
+        [DisplayName("Last Modified")]
         public DateTime Modified { get; set; }
 
         [HiddenInput]
@@ -66,6 +67,7 @@ namespace MVCChurchDirectory.ViewModels
 
         public string MarriedTo { get; set; }
 
+        [DisplayName("Name")]
         public string Name
         {
             get
@@ -73,7 +75,7 @@ namespace MVCChurchDirectory.ViewModels
                 return FirstName + " " + LastName;
             }
         }
-
+        [DisplayName("Address")]
         public string FullAddress
         {
             get

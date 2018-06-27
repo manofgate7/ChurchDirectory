@@ -8,7 +8,8 @@
     {
         @Html.TextBox("Search");<input type="submit" value="Search" />
     }
-    <table class="table left">
+    <div class="left" id="tableDiv">
+        <table class="table">
         <thead>
             <tr>
                 <th>First Name</th>
@@ -31,7 +32,9 @@
             </tr>
         }
     </table>
-    <div id="DisplayPerson" class="right col-lg-offset-8"> </div>
+    </div>
+    
+    <div id="DisplayPerson" class="right col-lg-7"> </div>
 
 </div>
 
@@ -40,6 +43,7 @@
         var GetPersonDetails = function (personID) {
             var url = "/Home/GetPerson?id=" + personID;
             $("#DisplayPerson").load(url);
+            $("#tableDiv").addClass("col-lg-5");
         };
     </script>
 
