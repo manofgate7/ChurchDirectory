@@ -26,4 +26,46 @@ textarea {
 .detailDiv {
     min-height: 3.5em;
     margin-bottom: .1em;
+    font-size: 1.1em;
+}
+.clickable {
+    cursor: pointer;
+}
+
+.detailContainer {
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 15px;
+    background-color: rgba(100, 100, 100, .02);
+    box-shadow: -1px 1px rgba(0,0,0,0.4), -2px 2px rgba(0,0,0,0.3), -3px 3px rgba(0,0,0,0.3), -4px 4px rgba(0,0,0,0.3);
+}
+
+.marginCon {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.detailContainer h4 {
+    background-color: rgba(140, 162, 247, .2);
+    padding: 10px;
+    margin-top: -.53em;
+    margin-left: -.41em;
+    margin-right: -.5em;
+    border-radius: 15px;
+    box-shadow: -1px 1px rgba(140, 162, 247, .2), -2px 2px rgba(140, 162, 247, .2), -3px 3px rgba(140, 162, 247, .2), -4px 4px rgba(140, 162, 247, .2);
+}
+
+.search {
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    vertical-align: middle;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }

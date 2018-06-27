@@ -1,5 +1,5 @@
 ﻿@model MVCChurchDirectory.ViewModels.HomePersonViewModel
-<div>
+<div class="detailContainer">
     <h4>Person's Details</h4>
     <div class="detailDiv col-lg-12">
         <span class="col-lg-4">@Html.DisplayFor(model => Model.Picture) </span>  <span class="col-lg-4">@Html.LabelFor(model => model.Name): @Html.DisplayFor(model => Model.Name)</span> <span class="col-lg-4">@Html.LabelFor(model => model.Modified): @Model.Modified</span>
@@ -10,7 +10,17 @@
     </div>
     <br />
     <div class="detailDiv">
-        <span class="col-lg-4">@Html.LabelFor(model => model.MatStatus): @Model.MatStatus </span> <span class="col-lg-8">@Model.MarriedTo</span>
+        <span class="col-lg-4">
+            @Html.LabelFor(model => model.MatStatus) : @Html.DisplayFor(model => model.MatarialStatus)
+        </span>
+        @if (!string.IsNullOrEmpty(Model.MarriedTo))
+        {
+            <span class="col-lg-8">@Html.LabelFor(model => model.MarriedTo): @Model.MarriedTo</span>
+        }
+        else
+        {
+            <span class="col-lg-8"> </span>
+        }
     </div>
     <br />
     <div class="detailDiv">
@@ -18,12 +28,16 @@
     </div>
     <br />
     <div class="detailDiv col-lg-12">
-        @Html.LabelFor(model => model.Children)
-        @foreach (var child in Model.Children)
+        @if (Model.Children.Count > 0)
         {
-            <div>
-                <span>@child.FirstName  @child.LastName</span> - <span> @child.Age yrs</span>
-            </div>
+            @Html.LabelFor(model => model.Children)
+            foreach (var child in Model.Children)
+            {
+                <div>
+                    <span>@child.FirstName  @child.LastName</span> - <span> @child.Age yrs</span>
+                </div>
+            }
         }
+
     </div>
 </div>

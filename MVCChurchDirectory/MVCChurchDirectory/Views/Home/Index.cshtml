@@ -3,13 +3,13 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
+<div class="row marginCon">
     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
     {
-        @Html.TextBox("Search");<input type="submit" value="Search" />
+        @Html.TextBox("Search", null, new { @class = "search" }); <input type="submit" value="Search" class="btn btn-primary" />
     }
     <div class="left" id="tableDiv">
-        <table class="table">
+        <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>First Name</th>
@@ -22,7 +22,7 @@
         </thead>
         @foreach (var person in Model)
         {
-            <tr id="personRow" onclick="GetPersonDetails(@person.personID)">
+            <tr id="personRow" onclick="GetPersonDetails(@person.personID)" class="clickable">
                 <td>@person.FirstName</td>
                 <td>@person.LastName</td>
                 <td>@person.Email</td>

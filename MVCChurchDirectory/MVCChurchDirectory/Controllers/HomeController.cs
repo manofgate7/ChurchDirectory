@@ -33,9 +33,10 @@ namespace MVCChurchDirectory.Controllers
                 HomePersonViewModel personVM = HomePersonViewModel.Map(person);
                 if(person.CategoryID > 0)
                     personVM.Category = categoryRepo.GetCategory(person.CategoryID).Name;
+
+                personVM.MatarialStatus = CreateMartailList(person.MatStatus);
                 personViewModel.Add(personVM);
             }
-
             return View(personViewModel);
         }
 
@@ -49,7 +50,29 @@ namespace MVCChurchDirectory.Controllers
             var mPerson = personRepo.GetPerson(person.PersonMarriedTo ?? -1);
             if(mPerson != null)
                 personVM.MarriedTo = mPerson.FirstName + " " + mPerson.LastName;
+            personVM.MatarialStatus = CreateMartailList(person.MatStatus);
             return PartialView("_PersonDetails", personVM);
+        }
+
+        [NonAction]
+        public string CreateMartailList(int? status)
+        {
+            List<MaritalVModel> list = new List<MaritalVModel>
+            {
+                new MaritalVModel(0, "Single"),
+                new MaritalVModel(1, "Married"),
+                new MaritalVModel(2, "Divorced"),
+                new MaritalVModel(3, "Widowed")
+            };
+
+            if(status != null)
+            {
+                return list.FirstOrDefault(x => x.ID == status).Name;
+            }else
+            {
+                return String.Empty;
+            }
+            
         }
 
 

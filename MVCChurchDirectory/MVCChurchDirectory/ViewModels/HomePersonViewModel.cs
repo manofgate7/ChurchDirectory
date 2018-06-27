@@ -65,7 +65,10 @@ namespace MVCChurchDirectory.ViewModels
 
         public HttpPostedFileBase Picture;
 
+        [DisplayName("Married To")]
         public string MarriedTo { get; set; }
+
+        public string MatarialStatus { get; set; }
 
         [DisplayName("Name")]
         public string Name
