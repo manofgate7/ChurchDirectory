@@ -13,5 +13,6 @@ namespace MVCChurchDirectory.Repos
         Category GetCategory(int CatID);
         bool UpdateCategory(Category category);
         bool AddNewCategory(Category category);
+        int? FindCategory(string name);
     }
 }

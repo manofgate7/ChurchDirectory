@@ -15,14 +15,24 @@ namespace MVCChurchDirectory.Controllers
         private IKid kidRepo = new PersonRepo();
         private ICategory categoryRepo = new CategoryRepo();
 
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, string searchBy)
         {
             List<HomePersonViewModel> personViewModel = new List<HomePersonViewModel>();
             List<Person> people; 
-            if (search != null)
+            if (search != null && searchBy == "Job")
+            {
+                int? id = categoryRepo.FindCategory(search);
+                if(id != null)
+                {
+                    people = personRepo.GetSearchedPeople(id ?? 0);
+                }
+                else
+                {
+                    people = new List<Person>();
+                }
+            } else if(search != null)
             {
                 people = personRepo.GetSearchedPeople(search);
-
             }
             else
             {

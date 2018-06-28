@@ -56,5 +56,23 @@ namespace MVCChurchDirectory.Repos
 
             return true;
         }
+
+        public int? FindCategory(string name)
+        {
+            try
+            {
+                Category category = dtb.Categories.Single(m => m.Name.Equals( name));
+                if(category != null)
+                {
+                    return category.CatID;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+            return null;
+        }
     }
 }
