@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<MVCChurchDirectory.ViewModels.EditPersonViewModel>
 <div>
-    <button type="button" onclick="AddNewPerson()">Add New Person</button>
-    <div id="NewPerson"></div>
+    <button type="button" onclick="AddNewPerson()" class="btn btn-info">Add New Person</button>
+    <div id="NewPerson" class="detailContainer marginCon"></div>
     <div>
-        <table>
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>First Name</th>
@@ -15,20 +15,20 @@
             </thead>
             @foreach (var person in Model)
     {
-        <tr id="personRow">
+        <tr id="personRow" class="largeFont">
             <td>@person.FirstName</td>
             <td>@person.LastName</td>
             <td>@person.Picture</td>
             <td>@person.Category</td>
             <td>
-                <button type="button" class="btn glyphicon glyphicon-pencil" onclick="EditViewPerson(@person.personID)"> Edit</button>
+                <button type="button" class="btn glyphicon glyphicon-pencil btn-primary" onclick="EditViewPerson(@person.personID)"> Edit</button>
             </td>
         </tr>
     }
         </table>
     </div>
 
-    <div id="EditPersonArea">
+    <div id="EditPersonArea" class="detailContainer">
 
     </div>
 </div>

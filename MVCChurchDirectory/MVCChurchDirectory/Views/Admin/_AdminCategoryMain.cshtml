@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<MVCChurchDirectory.Models.Category>
 <div>
-    <button type="button" onclick="AddNewCat()">Add New church Job</button>
-    <div id="NewCategory"></div>
-    <table>
+    <button type="button" onclick="AddNewCat()" class="btn btn-info">Add New church Job</button>
+    <div id="NewCategory" class="detailContainer"></div>
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th>Title</th>
@@ -12,17 +12,17 @@
         @foreach(var cat in Model)
         {
             <tr>
-                <td>
+                <td class="largeFont">
                     @Html.DisplayFor(model => cat.Name)
                 </td>
                 <td>
-                    <button type="button" class=" btn glyphicon glyphicon-pencil" onclick="EditViewCategory(@cat.CatID)">  Edit</button>
+                    <button type="button" class="btn glyphicon glyphicon-pencil btn-primary" onclick="EditViewCategory(@cat.CatID)">  Edit</button>
                 </td>
             </tr>
         }
     </table>
 
-    <div id="CatNameChange">
+    <div id="CatNameChange" class="detailContainer">
 
     </div>
 </div>

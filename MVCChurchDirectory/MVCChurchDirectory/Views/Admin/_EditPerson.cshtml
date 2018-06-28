@@ -73,7 +73,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.HaveKids, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.HaveKids, new SelectList(Model.YNOptions, "Key", "Value"), new { id = "ddlHKids" })
+                    @Html.DropDownListFor(model => model.HaveKids, new SelectList(Model.YNOptions, "Key", "Value"), new { id = "ddlHKids", @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.HaveKids, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -82,7 +82,7 @@
                 @Html.LabelFor(model => model.MatStatus, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownListFor(x => x.MatStatus,
-                                            new SelectList(Model.MartialStatuses, "ID", "Name"), "-- Select Status--", new { id = "ddlMStatus" })
+                                            new SelectList(Model.MartialStatuses, "ID", "Name"), "-- Select Status--", new { id = "ddlMStatus", @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.MatStatus, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -91,7 +91,7 @@
                 @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownListFor(x => x.CategoryID,
-                                            new SelectList(Model.Categories, "CatID", "Name"), "-- Select Job--", new { id = "ddlJobs" })
+                                            new SelectList(Model.Categories, "CatID", "Name"), "-- Select Job--", new { id = "ddlJobs", @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -100,7 +100,7 @@
                 @Html.LabelFor(model => model.MarriedTo, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownListFor(x => x.MarriedTo,
-                                            new SelectList(Model.people, "ID", "Name"), "-- Select Person--", new { id = "ddlPerson" })
+                                            new SelectList(Model.people, "ID", "Name"), "-- Select Person--", new { id = "ddlPerson", @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.MarriedTo, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -118,10 +118,10 @@
     }
 
     <div class="right col-lg-4" id="HavingKids">
-        <button type="button" onclick="AddNewKid(@Model.personID)"> Add New Kid</button>
+        <button type="button" onclick="AddNewKid(@Model.personID)" class="btn btn-info"> Add New Kid</button>
         <div id="NewKidModal"></div>
         <h3>Kid(s):</h3>
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     <th>First Name</th>

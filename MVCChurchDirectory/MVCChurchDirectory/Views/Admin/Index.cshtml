@@ -1,8 +1,8 @@
 ﻿@model MVCChurchDirectory.ViewModels.AdminViewModel
 
-<p>
+<p class="marginCon">
     @Html.DropDownListFor(x => x.SelectedID,
-                            new SelectList(Model.AdminList, "ID", "Name"), "-- Select Action--", new { id = "ddlCategory"})
+                            new SelectList(Model.AdminList, "ID", "Name"), "-- Select Action--", new { id = "ddlCategory", @class = "form-control"})
 </p>
 
 <div id="dvCategoryResults">
@@ -12,15 +12,34 @@
 @section Scripts {
 <script type="text/javascript">
     if ($("#ddlCategory").val() > 0) {
-        $("#dvCategoryResults").load('@(Url.Action("GrabAdminPage", "Admin",null, Request.Url.Scheme))?categoryId=' + $("#ddlCategory").val());
+        $("#dvCategoryResults").load('@(Url.Action("GrabAdminPage", "Admin",null, Request.Url.Scheme))?categoryId=' + $("#ddlCategory").val(), function () {
+            if ($("#ddlCategory").val() == 2) {
+                $("#CatNameChange").hide();
+                $("#NewCategory").hide();
+            }
+            if ($("#ddlCategory").val() == 1) {
+                $("#EditPersonArea").hide();
+                $("#NewPerson").hide();
+            }
+        });
     }
     $("#ddlCategory").change(function () {
         var categoryId = $("#ddlCategory").val();
-        $("#dvCategoryResults").load('@(Url.Action("GrabAdminPage", "Admin",null, Request.Url.Scheme))?categoryId=' + categoryId);
+        $("#dvCategoryResults").load('@(Url.Action("GrabAdminPage", "Admin",null, Request.Url.Scheme))?categoryId=' + categoryId, function () {
+            if ($("#ddlCategory").val() == 2) {
+                $("#CatNameChange").hide();
+                $("#NewCategory").hide();
+            }
+            if ($("#ddlCategory").val() == 1) {
+                $("#EditPersonArea").hide();
+                $("#NewPerson").hide();
+            }
+        });
     });
 
     var AddNewCat = function () {
         $("#NewCategory").load('@Url.Action("NewViewCat","Admin")');
+        $("#NewCategory").show();
     };
     var AddNewPerson = function () {
         $("#NewPerson").load('@Url.Action("NewViewPerson","Admin")', function () {
@@ -34,13 +53,16 @@
                 }
             });
         });
+        $("#NewPerson").show();
 
     };
     var EditViewCategory = function (catID) {
         var url = '/Admin/EditViewCat?CatID=' + catID;
         $("#CatNameChange").load(url);
+        $("#CatNameChange").show();
     };
     var EditViewPerson = function (personID) {
+        $("#EditPersonArea").show();
         var url = '/Admin/EditViewPerson?personID=' + personID;
         $("#EditPersonArea").load(url, function () {
             if ($("#ddlMStatus").val() != 1) {
@@ -68,6 +90,7 @@
                 }
             });
         });
+        
     };
 
     var AddNewKid = function (personID) {
