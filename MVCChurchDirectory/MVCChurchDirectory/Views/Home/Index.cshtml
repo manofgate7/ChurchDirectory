@@ -1,4 +1,5 @@
-﻿@model IEnumerable<MVCChurchDirectory.ViewModels.HomePersonViewModel>
+﻿@using MvcPaging;
+@model IPagedList<MVCChurchDirectory.ViewModels.HomePersonViewModel>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -35,6 +36,15 @@
                 </tr>
             }
         </table>
+        <div class="pager">
+            @Html.Pager(Model.PageSize, Model.PageNumber, Model.TotalItemCount).Options(o => o
+                .DisplayTemplate("BootstrapPagination")
+                .MaxNrOfPages(14)
+                .AlwaysAddFirstPageNumber()
+                .SetPreviousPageText("←")
+                .SetNextPageText("→")
+                )
+        </div>
     </div>
 
     <div id="DisplayPerson" class="right col-lg-7"> </div>

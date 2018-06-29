@@ -1,6 +1,7 @@
 ﻿using MVCChurchDirectory.Models;
 using MVCChurchDirectory.Repos;
 using MVCChurchDirectory.ViewModels;
+using MvcPaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,11 @@ namespace MVCChurchDirectory.Controllers
         private IPerson personRepo = new PersonRepo();
         private IKid kidRepo = new PersonRepo();
         private ICategory categoryRepo = new CategoryRepo();
+        private static int DefaultPageSize = 5;
 
-        public ActionResult Index(string search, string searchBy)
+        public ActionResult Index(string search, string searchBy, int? page)
         {
+            int currentPageIndex = page.HasValue ? page.Value - 1 : 0;
             List<HomePersonViewModel> personViewModel = new List<HomePersonViewModel>();
             List<Person> people; 
             if (search != null && searchBy == "Job")
@@ -47,7 +50,7 @@ namespace MVCChurchDirectory.Controllers
                 personVM.MatarialStatus = CreateMartailList(person.MatStatus);
                 personViewModel.Add(personVM);
             }
-            return View(personViewModel);
+            return View(personViewModel.ToPagedList(currentPageIndex, DefaultPageSize));
         }
 
         public ActionResult GetPerson(int id)

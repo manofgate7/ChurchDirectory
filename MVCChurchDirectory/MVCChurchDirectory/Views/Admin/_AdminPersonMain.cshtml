@@ -14,19 +14,19 @@
                 </tr>
             </thead>
             @foreach (var person in Model)
-    {
-        <tr id="personRow" class="largeFont">
-            <td>@person.FirstName</td>
-            <td>@person.LastName</td>
-            <td>@person.Picture</td>
-            <td>@person.Category</td>
-            <td>
-                <button type="button" class="btn glyphicon glyphicon-pencil btn-primary" onclick="EditViewPerson(@person.personID)"> Edit</button>
-            </td>
-        </tr>
+        {
+            <tr id="personRow" class="largeFont">
+                <td>@person.FirstName</td>
+                <td>@person.LastName</td>
+                <td>@person.Picture</td>
+                <td>@person.Category</td>
+                <td>
+                    <button type="button" class="btn glyphicon glyphicon-pencil btn-primary" onclick="EditViewPerson(@person.personID)"> Edit</button>
+                </td>
+            </tr>
     }
         </table>
-    </div>
+        </div>
 
     <div id="EditPersonArea" class="detailContainer">
 

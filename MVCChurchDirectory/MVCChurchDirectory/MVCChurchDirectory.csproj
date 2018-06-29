@@ -56,6 +56,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcPaging, Version=2.1.11.44, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcPaging.2.1.11\lib\net40\MvcPaging.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -218,6 +221,7 @@
     <Content Include="Views\Admin\_AddCategory.cshtml" />
     <Content Include="Views\Admin\_ModalPopUpKid.cshtml" />
     <Content Include="Views\Admin\_EditModalKid.cshtml" />
+    <Content Include="Views\Home\DisplayTemplates\BootstrapPagination.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

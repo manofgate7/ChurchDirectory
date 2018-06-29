@@ -44,3 +44,4 @@ C:\Users\User\source\repos\ChurchDirectory\MVCChurchDirectory\MVCChurchDirectory
 C:\Users\User\source\repos\ChurchDirectory\MVCChurchDirectory\MVCChurchDirectory\obj\Debug\MVCChurchDirectory.csproj.CoreCompileInputs.cache
 C:\Users\User\source\repos\ChurchDirectory\MVCChurchDirectory\MVCChurchDirectory\obj\Debug\MVCChurchDirectory.dll
 C:\Users\User\source\repos\ChurchDirectory\MVCChurchDirectory\MVCChurchDirectory\obj\Debug\MVCChurchDirectory.pdb
+C:\Users\User\source\repos\ChurchDirectory\MVCChurchDirectory\MVCChurchDirectory\bin\MvcPaging.dll

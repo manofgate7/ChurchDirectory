@@ -14,7 +14,8 @@ namespace MVCChurchDirectory.Controllers
         private ICategory catRepo = new CategoryRepo();
         private IPerson personRepo = new PersonRepo();
         private IKid kidRepo = new PersonRepo();
-        
+
+
         public ActionResult Index(int? lID)
         {
             AdminViewModel adminVM = new AdminViewModel();
