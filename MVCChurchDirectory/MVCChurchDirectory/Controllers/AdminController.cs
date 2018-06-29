@@ -3,6 +3,7 @@ using MVCChurchDirectory.Repos;
 using MVCChurchDirectory.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -114,6 +115,11 @@ namespace MVCChurchDirectory.Controllers
         public ActionResult CreatePerson(EditPersonViewModel form)
         {
             Person person = Person.Map(form);
+            if(form.Picture != null)
+            {
+                person.Image = new byte[form.Picture.ContentLength];
+                form.Picture.InputStream.Read(person.Image, 0, form.Picture.ContentLength);
+            }
             bool hasSaved = personRepo.AddNewPerson(person);
             if (hasSaved)
             {
@@ -149,6 +155,11 @@ namespace MVCChurchDirectory.Controllers
         public ActionResult EditPerson(EditPersonViewModel form)
         {
             Person person = Person.Map(form);
+            if (form.Picture != null)
+            {
+                person.Image = new byte[form.Picture.ContentLength];
+                form.Picture.InputStream.Read(person.Image, 0, form.Picture.ContentLength);
+            }
             bool hasSaved = personRepo.UpdatePerson(person);
             if (hasSaved)
                 return RedirectToAction("Index", new { lID = 1 });

@@ -65,6 +65,8 @@ namespace MVCChurchDirectory.ViewModels
 
         public HttpPostedFileBase Picture;
 
+        public byte[] PostedFile { get; set; }
+
         [DisplayName("Married To")]
         public string MarriedTo { get; set; }
 
@@ -104,6 +106,7 @@ namespace MVCChurchDirectory.ViewModels
                 , Modified = dm.Modified
                 , PhoneNumber = dm.PhoneNumber
                 , Picture = dm.Picture
+                , PostedFile = dm.Image
             };
         }
     }

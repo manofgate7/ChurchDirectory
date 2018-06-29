@@ -27,6 +27,8 @@ textarea {
     min-height: 3.5em;
     margin-bottom: .1em;
     font-size: 1.1em;
+    display:block;
+    clear: both;
 }
 .clickable {
     cursor: pointer;

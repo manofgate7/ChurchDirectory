@@ -1,6 +1,6 @@
 ﻿@model MVCChurchDirectory.ViewModels.EditPersonViewModel
 
-@using (Html.BeginForm("CreatePerson", "Admin")) 
+@using (Html.BeginForm("CreatePerson", "Admin", FormMethod.Post, new { enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     
@@ -99,6 +99,13 @@
                 @Html.DropDownListFor(x => x.MarriedTo,
               new SelectList(Model.people, "ID", "Name"), "-- Select Person--", new { id = "ddlPerson", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MarriedTo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Picture, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="Picture"/>
             </div>
         </div>
 

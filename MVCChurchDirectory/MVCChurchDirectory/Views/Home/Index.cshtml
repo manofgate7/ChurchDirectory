@@ -26,14 +26,22 @@
             </thead>
             @foreach (var person in Model)
             {
-                <tr id="personRow" onclick="GetPersonDetails(@person.personID)" class="clickable">
-                    <td>@person.FirstName</td>
-                    <td>@person.LastName</td>
-                    <td>@person.Email</td>
-                    <td>@person.PhoneNumber</td>
-                    <td>@person.Picture</td>
-                    <td>@person.Category</td>
-                </tr>
+            <tr id="personRow" onclick="GetPersonDetails(@person.personID)" class="clickable">
+                <td>@person.FirstName</td>
+                <td>@person.LastName</td>
+                <td>@person.Email</td>
+                <td>@person.PhoneNumber</td>
+                @if (person.PostedFile != null)
+    {
+            <td><img src="data:image;base64,@System.Convert.ToBase64String(person.PostedFile)" width="75" /></td>
+}
+else
+{
+            <td>@person.PostedFile</td>
+}
+
+                <td>@person.Category</td>
+            </tr>
             }
         </table>
         <div class="pager">

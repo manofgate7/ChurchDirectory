@@ -143,6 +143,7 @@ namespace MVCChurchDirectory.Repos
                 uPerson.MatStatus = person.MatStatus;
                 uPerson.PhoneNumber = person.PhoneNumber;
                 uPerson.Picture = person.Picture;
+                uPerson.Image = person.Image;
                 uPerson.Modified = DateTime.Now;
                 uPerson.PersonMarriedTo = person.PersonMarriedTo;
                 dtb.SaveChanges();

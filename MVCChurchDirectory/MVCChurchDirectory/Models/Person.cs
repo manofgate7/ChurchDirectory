@@ -58,6 +58,7 @@ namespace MVCChurchDirectory.Models
         public virtual ICollection<Child> Children { get; set; }
 
         public byte[] Image { get; set; }
+
         [NotMapped]
         public HttpPostedFileBase Picture { get; set; }
 

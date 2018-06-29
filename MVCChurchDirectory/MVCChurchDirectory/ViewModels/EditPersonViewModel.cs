@@ -61,7 +61,7 @@ namespace MVCChurchDirectory.ViewModels
         [DisplayName("Kid(s):")]
         public virtual ICollection<Child> Children { get; set; }
 
-        public HttpPostedFileBase Picture;
+        public HttpPostedFileBase Picture { get; set; }
 
         public int? MarriedTo { get; set; }
 
@@ -72,6 +72,8 @@ namespace MVCChurchDirectory.ViewModels
         public List<MaritalVModel> MartialStatuses { get; set; }
 
         public IDictionary<bool, string> YNOptions { get; set; }
+
+        public byte[] PostedImage { get; set; }
 
 
         public static EditPersonViewModel Map(Person dm)
@@ -104,6 +106,7 @@ namespace MVCChurchDirectory.ViewModels
                 ,
                 Picture = dm.Picture
                 , MarriedTo = dm.PersonMarriedTo
+                , PostedImage = dm.Image
             };
         }
     }
